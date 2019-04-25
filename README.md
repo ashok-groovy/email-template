@@ -27,7 +27,29 @@ Migrate Fisrt
 php yii migrate --migrationPath=vendor/groovy/src/migrations create_email_template_table
 ```
 
+Add Module In Mail-local.php
+----------------------------
+```php
+'emailtemplate' => [
+    'class' => 'vendor\groovy\src\email\components\EmailsTemplate',
+],
+```
+
+Add components In Mail-local.php
+----------------------------
+```php
+'email' => [
+            'class' => 'vendor\groovy\src\email\Module',
+        ],
+```
+
+
 Usage
 -----
 
-Pending Added
+```php
+$string_array = array(
+    '{{Password}}'=>$password,
+);
+
+```

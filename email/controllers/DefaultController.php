@@ -62,7 +62,9 @@ class DefaultController extends Controller
     {
         $model = new EmailTemplate();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->email_slug = $this->create_slug($model->emai_template_name);
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -70,6 +72,11 @@ class DefaultController extends Controller
             'model' => $model,
         ]);
     }
+
+    function create_slug($string){
+        $slug=preg_replace('/[^A-Za-z0-9-]+/', '_', $string);
+        return $slug;
+     }
 
     /**
      * Updates an existing EmailTemplate model.
