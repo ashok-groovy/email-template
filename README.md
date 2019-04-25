@@ -16,16 +16,18 @@ php composer.phar require --prefer-dist groovy/src "*"
 or add
 
 ```
-"groovy/src": "*"
+"groovy/src": "dev-master"
 ```
 
 to the require section of your `composer.json` file.
 
+Migrate Fisrt 
+-----
+```php 
+php yii migrate --migrationPath=vendor/groovy/src/migrations create_email_template_table
+```
 
 Usage
 -----
 
-Once the extension is installed, simply use it in your code by  :
-
-```php
-<?= \emailtemplate\AutoloadExample::widget(); ?>```
+Pending Added
