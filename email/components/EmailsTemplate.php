@@ -27,5 +27,6 @@ class EmailsTemplate extends Component
             }
             return true;
         }
+        return "";
     }
 }
