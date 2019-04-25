@@ -21,7 +21,7 @@ or add
 
 to the require section of your `composer.json` file.
 
-Migrate Fisrt 
+Migrate First 
 -----
 ```php 
 php yii migrate --migrationPath=vendor/groovy/src/migrations create_email_template_table
@@ -51,5 +51,5 @@ Usage
 $string_array = array(
     '{{Password}}'=>$password,
 );
-
+$html = Yii::$app->emailtemplate->replace_string_email($string_array ,"welcome_mail "); // $string_array = Array Of String welcome_mail = Email Slug
 ```
