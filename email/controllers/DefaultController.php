@@ -63,7 +63,7 @@ class DefaultController extends Controller
         $model = new EmailTemplate();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->email_slug = $this->create_slug($model->emai_template_name);
+            $model->email_slug = $this->create_slug(strtolower($model->emai_template_name));
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }

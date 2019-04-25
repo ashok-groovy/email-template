@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'id',
             'emai_template_name',
             // 'email_status:email',
-            // 'email_slug:email',
+            'email_slug',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -1,7 +1,7 @@
 <?php
 namespace  vendor\groovy\src\email\components;
-
 use Yii;
+use yii\base\Component;
 use vendor\groovy\src\email\models\EmailTemplate;
 
 /**
@@ -13,7 +13,7 @@ class EmailsTemplate extends Component
         if($slug != ''){
             $mail_template_array = EmailTemplate::findOne(['email_slug'=>$slug]);
             if(!empty($mail_template_array)){
-                $content = $mail_template_array->post_content;
+                $content = $mail_template_array->email_content;
                 $word = array();
                 $replace_word = array();
                 if(!empty($array)){
