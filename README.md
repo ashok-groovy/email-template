@@ -27,20 +27,21 @@ Migrate First
 php yii migrate --migrationPath=vendor/groovy/src/migrations create_email_template_table
 ```
 
-Add Module In Mail-local.php
+Add Module
+----------------------------
+```php
+'email' => [
+    'class' => 'vendor\groovy\src\email\Module',
+],
+
+```
+
+Add components
 ----------------------------
 ```php
 'emailtemplate' => [
     'class' => 'vendor\groovy\src\email\components\EmailsTemplate',
 ],
-```
-
-Add components In Mail-local.php
-----------------------------
-```php
-'email' => [
-            'class' => 'vendor\groovy\src\email\Module',
-        ],
 ```
 
 
