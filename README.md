@@ -52,8 +52,16 @@ Usage
 -----
 
 ```php
+// Need Email HTML dynamic
 $string_array = array(
     '{{Password}}'=>$password,
 );
-$html = Yii::$app->emailtemplate->replace_string_email($string_array ,"welcome_mail "); // $string_array = Array Of String welcome_mail = Email Slug
+$html = Yii::$app->emailtemplate->replace_string_email($string_array ,"welcome_email"); // $string_array = Array Of String welcome_email = Email Slug
+
+// Need Email HTML Subject
+$subject_string_array = array(
+     "{{app_name}}"=>Yii::$app->name
+);
+$subject = Yii::$app->emailtemplate->replace_string_email($subject_string_array ,"welcome_email","subject");// $string_array = Array Of String welcome_mail = Email Slug and subject
+
 ```
