@@ -24,7 +24,7 @@ to the require section of your `composer.json` file.
 Migrate First 
 -----
 ```php 
-php yii migrate --migrationPath=vendor/groovy/src/migrations create_email_template_table
+php yii migrate --migrationPath=vendor/groovy/src/migrations
 ```
 
 Add Module

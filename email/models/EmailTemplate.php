@@ -28,7 +28,7 @@ class EmailTemplate extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['emai_template_name', 'email_status'], 'required'],
+            [['emai_template_name', 'email_status','email_subject'], 'required'],
             [['email_status','email_content'], 'string'],
             [['emai_template_name', 'email_slug'], 'string', 'max' => 100],
         ];

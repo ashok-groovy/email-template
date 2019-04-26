@@ -13,14 +13,19 @@ class EmailsTemplate extends Component
     public $allowInsert = false;
     public $icons = ["update"=>"glyphicon glyphicon-pencil","view"=>"glyphicon glyphicon-eye-open","delete"=>"glyphicon glyphicon-trash"];
     
-    public function replace_string_email($array,$slug){
+    public function replace_string_email($array,$slug,$type = "mail"){
         if($slug != ''){
-            $mail_template_array = EmailTemplate::findOne(['email_slug'=>$slug]);
+            $mail_template_array = EmailTemplate::findOne(['email_slug'=>$slug]);            
             if(!empty($mail_template_array)){
-                $content = $mail_template_array->email_content;
+                if($type == "subject"){
+                    $content = $mail_template_array->email_subject;
+                }else{
+                    $content = $mail_template_array->email_content;
+                }
                 $word = array();
                 $replace_word = array();
                 if(!empty($array)){
+                    $array["{{year}}"] = date("Y");
                     foreach($array as $k=>$d){
                         $word[] =  $k;
                         $replace_word[] = $d;

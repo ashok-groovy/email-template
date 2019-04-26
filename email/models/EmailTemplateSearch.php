@@ -18,7 +18,7 @@ class EmailTemplateSearch extends EmailTemplate
     {
         return [
             [['id'], 'integer'],
-            [['emai_template_name', 'email_status', 'email_slug'], 'safe'],
+            [['emai_template_name', 'email_status', 'email_slug','email_subject'], 'safe'],
         ];
     }
 
@@ -63,6 +63,7 @@ class EmailTemplateSearch extends EmailTemplate
 
         $query->andFilterWhere(['like', 'emai_template_name', $this->emai_template_name])
             ->andFilterWhere(['like', 'email_status', $this->email_status])
+            ->andFilterWhere(['like', 'email_subject', $this->email_subject])
             ->andFilterWhere(['like', 'email_slug', $this->email_slug]);
 
         return $dataProvider;

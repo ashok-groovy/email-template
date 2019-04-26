@@ -18,6 +18,8 @@ use yii\web\JsExpression;
 
     <?= $form->field($model, 'emai_template_name')->textInput(['maxlength' => true,'oninput'=>'myFunction()']) ?>
 
+    <?= $form->field($model, 'email_subject')->textInput(['maxlength' => true,'oninput'=>'myFunction()']) ?>
+
     <?= $form->field($model, 'email_content')->widget(TinyMce::className(), [
             'options' => ['rows' => 12],
             'language' => 'en',
