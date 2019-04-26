@@ -48,20 +48,30 @@ $this->params['breadcrumbs'][] = $this->title;
                     'view' => function ($url, $model) {
                         $configure = Yii::$app->get('emailtemplate', true);
                         $icons =  $configure->icons;
-                        $text = Html::a('<i class="'.$icons['view'].'"></i>', $url, ['class'=>'success p-0 openConfirmModal']);
+                        $text = Html::a('<i class="'.$icons['view'].'"></i>', $url, ['class'=>'success p-0']);
                         return  $text;
                     },
                     'update' => function ($url, $model) {
                         $configure = Yii::$app->get('emailtemplate', true);
                         $icons =  $configure->icons;
-                        $text = Html::a('<i class="'.$icons['update'].'"></i>', $url, ['class'=>'success p-0 openConfirmModal']);
+                        $text = Html::a('<i class="'.$icons['update'].'"></i>', $url, ['class'=>'success p-0']);
                         return  $text;
                     },
                     'delete' => function ($url, $model) {
                         $configure = Yii::$app->get('emailtemplate', true);
                         $icons =  $configure->icons;
-                        $text = Html::a('<i class="'.$icons['delete'].'"></i>', $url, ['class'=>'success p-0 openConfirmModal']);
-                        return  $text;
+                        if($configure->allowDelete){
+                            return Html::a('<span class="'.$icons['delete'].'"></span>', ['delete', 'id' => $model->id], [
+                                'class' => '',
+                                'data' => [
+                                    'confirm' => 'Are you absolutely sure ? You want to delete ?',
+                                    'method' => 'post',
+                                ],
+                            ]);
+                        }else{
+                            return  false;
+                        }
+                        
                     },
                 ],
                 'template' => '{view}{update}{delete}',   
