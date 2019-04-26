@@ -41,6 +41,9 @@ Add components
 ```php
 'emailtemplate' => [
     'class' => 'vendor\groovy\src\email\components\EmailsTemplate',
+    'allowDelete'=>true,
+    'allowInsert'=>true,
+    'icons'=>["update"=>"glyphicon glyphicon-pencil","view"=>"glyphicon glyphicon-eye-open","delete"=>"glyphicon glyphicon-trash"],
 ],
 ```
 
