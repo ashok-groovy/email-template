@@ -17,7 +17,7 @@ class m190425_101630_create_email_template_table extends Migration
             'emai_template_name' => $this->string(100)->notNull(),
             'email_status' => "ENUM('active', 'deactive') DEFAULT 'active'",
             'email_slug' => $this->string(100)->notNull(),
-            'email_content' => "TEXT",
+            'email_content' => "LONG TEXT",
         ]);
     }
 
