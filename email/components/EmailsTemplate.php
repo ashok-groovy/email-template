@@ -9,6 +9,10 @@ use vendor\groovy\src\email\models\EmailTemplate;
  */
 class EmailsTemplate extends Component
 {
+    public $allowDelete = false;
+    public $allowInsert = false;
+    public $icons = ["update"=>"glyphicon glyphicon-pencil","view"=>"glyphicon glyphicon-eye-open","delete"=>"glyphicon glyphicon-trash"];
+    
     public function replace_string_email($array,$slug){
         if($slug != ''){
             $mail_template_array = EmailTemplate::findOne(['email_slug'=>$slug]);

@@ -19,6 +19,7 @@ use yii\helpers\Url;
 class DefaultController extends Controller
 {
 
+    public $configComponentName = 'emailtemplate';
     public function beforeAction($action) 
     { 
         $this->enableCsrfValidation = false; 
@@ -33,10 +34,11 @@ class DefaultController extends Controller
     {
         $searchModel = new EmailTemplateSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        $configure = Yii::$app->get($this->configComponentName, true);
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'configure'=>$configure,
         ]);
     }
 
@@ -61,7 +63,10 @@ class DefaultController extends Controller
     public function actionCreate()
     {
         $model = new EmailTemplate();
-
+        $configure = Yii::$app->get($this->configComponentName, true);
+        if(!$configure->allowInsert){
+            return $this->redirect(['index']);
+        }
         if ($model->load(Yii::$app->request->post())) {
             $model->email_slug = $this->create_slug(strtolower($model->emai_template_name));
             $model->save();
@@ -107,6 +112,10 @@ class DefaultController extends Controller
      */
     public function actionDelete($id)
     {
+        $configure = Yii::$app->get($this->configComponentName, true);
+        if(!$configure->allowDelete){
+            return $this->redirect(['index']);
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

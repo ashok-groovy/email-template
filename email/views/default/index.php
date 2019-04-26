@@ -8,6 +8,7 @@ use yii\widgets\Breadcrumbs;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 $this->title = Yii::t('app', 'Email Templates');
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="border-bottom-breadcumb pos-relative">
     <div class="prtm-block-title mrgn-b-lg">
@@ -23,11 +24,13 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
     <?php Pjax::begin(); ?>
+    <?php if($configure->allowInsert){?>
     <div class="clearfix">
         <div class="clearfix">
             <?= Html::a(Yii::t('app', '<i class="fa fa-plus"></i> Create Email Template'), ['create'], ['class' => 'btn btn-inverse pull-right btn-lg']) ?>
         </div>
     </div>
+    <?php } ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -39,7 +42,31 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'email_status:email',
             'email_slug',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+            'header' => 'Actions',
+            'buttons'=>[
+                    'view' => function ($url, $model) {
+                        $configure = Yii::$app->get('emailtemplate', true);
+                        $icons =  $configure->icons;
+                        $text = Html::a('<i class="'.$icons['view'].'"></i>', $url, ['class'=>'success p-0 openConfirmModal']);
+                        return  $text;
+                    },
+                    'update' => function ($url, $model) {
+                        $configure = Yii::$app->get('emailtemplate', true);
+                        $icons =  $configure->icons;
+                        $text = Html::a('<i class="'.$icons['update'].'"></i>', $url, ['class'=>'success p-0 openConfirmModal']);
+                        return  $text;
+                    },
+                    'delete' => function ($url, $model) {
+                        $configure = Yii::$app->get('emailtemplate', true);
+                        $icons =  $configure->icons;
+                        $text = Html::a('<i class="'.$icons['delete'].'"></i>', $url, ['class'=>'success p-0 openConfirmModal']);
+                        return  $text;
+                    },
+                ],
+                'template' => '{view}{update}{delete}',   
+            ],
+
         ],
     ]); ?>
     <?php Pjax::end(); ?>
