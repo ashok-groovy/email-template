@@ -47,8 +47,6 @@ use yii\web\JsExpression;
             'file_picker_types'=> 'image',
             'image_caption'=>true,
             'images_upload_url'=> Url::base(true).'/email/default/uploadimage',
-            
-            
             'toolbar' => "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor | link image imageupload | fontselect | cut copy paste"
         ]
         ]); ?>
