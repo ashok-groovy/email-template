@@ -57,7 +57,7 @@ use yii\web\JsExpression;
         $readOnly = false;
         $buttonDummy = false;
     }else {
-        $readOnly = false;
+        $readOnly = true;
         $buttonDummy = true;
     } ?>
     <?= $form->field($model, 'email_available_tags')->textInput(['maxlength' => true,'readOnly'=>$readOnly]) ?>
