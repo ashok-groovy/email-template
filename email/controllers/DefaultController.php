@@ -45,7 +45,7 @@ class DefaultController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['create','index', 'update', 'view', 'delete', 'uploadimage'],
+                        'actions' => ['create','index', 'update', 'view', 'delete', 'uploadimage','getcontent'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -186,5 +186,12 @@ class DefaultController extends Controller
         }
         
         print_r($file);die;
+    }
+
+    public function actionGetcontent(){
+        $configure = Yii::$app->get('emailtemplate', true);
+        $content = file_get_contents($configure->dummycontent);
+        echo json_encode(['status'=>true,"html"=>$content]);die;
+        print_r($content);die;
     }
 }

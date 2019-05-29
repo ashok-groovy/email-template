@@ -60,14 +60,34 @@ use yii\web\JsExpression;
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::Button('Add Dummy Content', ['class' => 'btn btn-primary dummyCntent']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
-<script> 
-    function jsFunctionToBeCalled() {
-        // ...
-    }
-</script>
+<?php
+$this->registerJS(
+    "var baseUrl = '".Url::base(true)."'"
+);
+$this->registerJS(
+    "$(document).ready(function() {
+        $(document).on('click', '.dummyCntent', function(e) {
+            $.ajax({
+                type: 'POST',
+                url: baseUrl + '/email/default/getcontent',
+                data: {},
+                cache: false,
+                dataType: 'json',
+                success: function(data) {
+                    tinymce.get('emailtemplate-email_content').setContent(data.html);
+                },
+                error: function(xhr, status, error) {
+                    alert(error);
+                },
+            });
+        })
+    })"
+);
+?>
 
