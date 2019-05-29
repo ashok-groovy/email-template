@@ -18,7 +18,7 @@ class EmailTemplateSearch extends EmailTemplate
     {
         return [
             [['id'], 'integer'],
-            [['emai_template_name', 'email_status', 'email_slug','email_subject'], 'safe'],
+            [['emai_template_name', 'email_status', 'email_slug','email_subject','email_available_tags'], 'safe'],
         ];
     }
 

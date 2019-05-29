@@ -29,7 +29,7 @@ class EmailTemplate extends \yii\db\ActiveRecord
     {
         return [
             [['emai_template_name', 'email_status','email_subject'], 'required'],
-            [['email_status','email_content'], 'string'],
+            [['email_status','email_content','email_available_tags'], 'string'],
             [['emai_template_name', 'email_slug'], 'string', 'max' => 100],
         ];
     }
@@ -44,6 +44,7 @@ class EmailTemplate extends \yii\db\ActiveRecord
             'emai_template_name' => Yii::t('app', 'Emai Template Name'),
             'email_status' => Yii::t('app', 'Email Status'),
             'email_slug' => Yii::t('app', 'Email Slug'),
+            'email_available_tags' => Yii::t('app', 'Email Available Tags'),
         ];
     }
 }

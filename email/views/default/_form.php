@@ -54,9 +54,18 @@ use yii\web\JsExpression;
         ]); ?>
 
     <?= $form->field($model, 'email_status')->dropDownList([ 'active' => 'Active', 'deactive' => 'Deactive', ], ['prompt' => '']) ?>
-
+    
+    <?php if($model->isNewRecord == 1){ 
+        $readOnly = false;
+        $buttonDummy = false;
+    }else {
+        $readOnly = false;
+        $buttonDummy = true;
+    } ?>
+    <?= $form->field($model, 'email_available_tags')->textInput(['maxlength' => true,'readOnly'=>$readOnly]) ?>
 
     <?= $form->field($model, 'email_slug')->hiddenInput()->label(false); ?>
+
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
