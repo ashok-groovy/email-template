@@ -18,5 +18,10 @@
         "psr-4": {
             "emailtemplate\\": ""
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "v1.2-dev"
+        }
     }
 }
