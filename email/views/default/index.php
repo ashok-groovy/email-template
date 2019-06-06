@@ -7,9 +7,9 @@ use yii\widgets\Pjax;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 $this->title = Yii::t('app', 'Email Templates');
 $this->params['breadcrumbs'][] = $this->title;
-
+include_once($breadcrumb);
 ?>
-    <?php Pjax::begin(); ?>
+<?php Pjax::begin(); ?>
     <?php if($configure->allowInsert){?>
     <div class="clearfix">
         <div class="clearfix">
