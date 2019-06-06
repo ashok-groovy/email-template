@@ -69,6 +69,7 @@ class DefaultController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'configure'=>$configure,
+            'breadcrumb'=>$configure->breadcrumbs
         ]);
     }
 
