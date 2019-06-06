@@ -21,6 +21,7 @@ class DefaultController extends Controller
 {
 
     public $configComponentName = 'emailtemplate';
+    
     public function beforeAction($action) 
     { 
         $this->enableCsrfValidation = false; 
@@ -63,6 +64,7 @@ class DefaultController extends Controller
         $searchModel = new EmailTemplateSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $configure = Yii::$app->get($this->configComponentName, true);
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -103,6 +105,7 @@ class DefaultController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'breadcrumb'=>$configure->breadcrumbs
         ]);
     }
 
@@ -121,13 +124,14 @@ class DefaultController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $configure = Yii::$app->get($this->configComponentName, true);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'breadcrumb'=>$configure->breadcrumbs
         ]);
     }
 

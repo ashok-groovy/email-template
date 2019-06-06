@@ -7,23 +7,12 @@ $this->title = Yii::t('app', 'Create Email Template');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Email Templates'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="border-bottom-breadcumb pos-relative">
-    <div class="prtm-block-title mrgn-b-lg">
-        <div class="caption">
-                <h3 class="text-capitalize"><?= $this->title;?></h3>
-        </div>
-        <div class="contextual-link">
-            <?php 
-            echo Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]);?>
-        </div>
-    </div>
-</div>
+<?php include_once($breadcrumb);?>
 <div class="email-template-create">
 
     <?= $this->render('_form', [
         'model' => $model,
+        'breadcrumb'=>$breadcrumb,
     ]) ?>
 
 </div>

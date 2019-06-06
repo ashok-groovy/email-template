@@ -2,7 +2,7 @@ Groovy Email Template
 =====================
 Groovy Email Template
 
-Installation ---- V2
+Installation ---- V1.4
 ------------
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).

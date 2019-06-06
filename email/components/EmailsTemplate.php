@@ -11,7 +11,9 @@ class EmailsTemplate extends Component
 {
     public $allowDelete = false;
     public $allowInsert = false;
-    public $dummycontent = '';    
+    public $dummycontent = '';   
+    public $breadcrumbs;
+    
     public $icons = ["update"=>"glyphicon glyphicon-pencil","view"=>"glyphicon glyphicon-eye-open","delete"=>"glyphicon glyphicon-trash"];
     
     public function replace_string_email($array,$slug,$type = "mail"){
