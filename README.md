@@ -41,10 +41,11 @@ Add components
 ```php
 'emailtemplate' => [
     'class' => 'vendor\groovy\src\email\components\EmailsTemplate',
-    'allowDelete'=>true,
+    'allowDelete'=>false,
     'allowInsert'=>true,
     'dummycontent'=> dirname(dirname(__DIR__))."/frontend/web/emailtemplate/dummy.html",
     'icons'=>["update"=>"glyphicon glyphicon-pencil","view"=>"glyphicon glyphicon-eye-open","delete"=>"glyphicon glyphicon-trash"],
+    'breadcrumbs'=> dirname(dirname(__DIR__))."/frontend/web/breadcrumbs/breadcrumbs.php",
 ],
 ```
 
