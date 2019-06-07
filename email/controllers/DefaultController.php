@@ -81,6 +81,7 @@ class DefaultController extends Controller
      */
     public function actionView($id)
     {
+        return $this->redirect(['index']);
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -101,7 +102,8 @@ class DefaultController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->email_slug = $this->create_slug(strtolower($model->emai_template_name));
             $model->save();
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
+            // return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -127,7 +129,8 @@ class DefaultController extends Controller
         $model = $this->findModel($id);
         $configure = Yii::$app->get($this->configComponentName, true);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
+            // return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -189,8 +192,6 @@ class DefaultController extends Controller
             $file_location = 'uploads/extrnal/'. $newFileName;   
             return json_encode(array("location"=>Url::base(true).'/'.$file_location));die;;
         }
-        
-        print_r($file);die;
     }
 
     public function actionGetcontent(){

@@ -20,6 +20,7 @@ include_once($breadcrumb);
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'options'=>['class'=>"grid-view email-grid-view"],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -34,13 +35,13 @@ include_once($breadcrumb);
                     'view' => function ($url, $model) {
                         $configure = Yii::$app->get('emailtemplate', true);
                         $icons =  $configure->icons;
-                        $text = Html::a('<i class="'.$icons['view'].'"></i>', $url, ['class'=>'success p-0']);
+                        $text = Html::a('<i class="'.$icons['view'].'"></i>', $url, ['class'=>'success p-0 grid-view-class']);
                         return  $text;
                     },
                     'update' => function ($url, $model) {
                         $configure = Yii::$app->get('emailtemplate', true);
                         $icons =  $configure->icons;
-                        $text = Html::a('<i class="'.$icons['update'].'"></i>', $url, ['class'=>'success p-0']);
+                        $text = Html::a('<i class="'.$icons['update'].'"></i>', $url, ['class'=>'success p-0 grid-update-class']);
                         return  $text;
                     },
                     'delete' => function ($url, $model) {
@@ -48,7 +49,7 @@ include_once($breadcrumb);
                         $icons =  $configure->icons;
                         if($configure->allowDelete){
                             return Html::a('<span class="'.$icons['delete'].'"></span>', ['delete', 'id' => $model->id], [
-                                'class' => '',
+                                'class' => 'success p-0 grid-update-class btn btn-warning',
                                 'data' => [
                                     'confirm' => 'Are you absolutely sure ? You want to delete ?',
                                     'method' => 'post',
@@ -60,7 +61,7 @@ include_once($breadcrumb);
                         
                     },
                 ],
-                'template' => '{view}{update}{delete}',   
+                'template' => '{update}{delete}',   
             ],
 
         ],
