@@ -197,7 +197,11 @@ class DefaultController extends Controller
     public function actionGetcontent(){
         $configure = Yii::$app->get('emailtemplate', true);
         if(!empty($configure->dummycontent)){
-            $content = file_get_contents($configure->dummycontent);
+            ob_start();
+            include($configure->dummycontent);
+            $content = ob_get_contents();
+            ob_end_clean();
+            // $content = file_get_contents($configure->dummycontent);
             echo json_encode(['status'=>true,"html"=>$content]);die;
         }else{
             $content = "Dummy Content File Not Set....";
