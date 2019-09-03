@@ -51,8 +51,12 @@ use yii\web\JsExpression;
         ]
         ]); ?>
 
-    <?= $form->field($model, 'email_status')->dropDownList([ 'active' => 'Active', 'deactive' => 'Deactive', ], ['prompt' => '']) ?>
     
+        
+    <?= $form->field($model, 'text_version')->textArea(['maxlength' => true,'rows' => 12])->label('Text Version (<span style="color: red;font-weight: 600;">This auto convert HTML to Text Version if you leave blank</span>)') ?>
+
+    <?= $form->field($model, 'email_status')->dropDownList([ 'active' => 'Active', 'deactive' => 'Deactive', ], ['prompt' => '']) ?>
+        
     <?php if($model->isNewRecord == 1){ 
         $readOnly = false;
         $buttonDummy = false;

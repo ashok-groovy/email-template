@@ -30,6 +30,7 @@ class EmailTemplate extends \yii\db\ActiveRecord
         return [
             [['emai_template_name', 'email_status','email_subject'], 'required'],
             [['email_status','email_content','email_available_tags'], 'string'],
+            [['text_version'], 'safe'],
             [['emai_template_name', 'email_slug'], 'string', 'max' => 100],
         ];
     }

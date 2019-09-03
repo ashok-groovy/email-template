@@ -101,6 +101,9 @@ class DefaultController extends Controller
         }
         if ($model->load(Yii::$app->request->post())) {
             $model->email_slug = $this->create_slug(strtolower($model->emai_template_name));
+            if(empty($model->text_version)){
+                $model->text_version =  Yii::$app->emailtemplate->parseString($model->email_content);
+            }
             $model->save();
             return $this->redirect(['index']);
             // return $this->redirect(['view', 'id' => $model->id]);
@@ -128,7 +131,11 @@ class DefaultController extends Controller
     {
         $model = $this->findModel($id);
         $configure = Yii::$app->get($this->configComponentName, true);
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            if(empty($model->text_version)){
+                $model->text_version =  Yii::$app->emailtemplate->parseString($model->email_content);
+            }
+            $model->save();
             return $this->redirect(['index']);
             // return $this->redirect(['view', 'id' => $model->id]);
         }

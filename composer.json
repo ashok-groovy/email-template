@@ -12,7 +12,8 @@
     ],
     "require": {
         "yiisoft/yii2": "~2.0.0",
-        "2amigos/yii2-tinymce-widget" : "~1.1"
+        "2amigos/yii2-tinymce-widget" : "~1.1",
+        "agsachdev/yii2-digitalocean-spaces": "dev-master"
     },
     "autoload": {
         "psr-4": {
