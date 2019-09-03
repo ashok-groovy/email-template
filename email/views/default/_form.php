@@ -82,9 +82,9 @@ $flag = 'http';
 if ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) {
 	$flag = 'https';
 }
-#$this->registerJS(
-#    "var baseUrl = '".Url::base('https')."'"
-#);
+$this->registerJS(
+    "var baseUrl = '".Url::base($flag)."'"
+);
 
 $this->registerJS(
     "$(document).ready(function() {
