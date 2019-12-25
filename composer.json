@@ -10,6 +10,7 @@
             "email": "agsachdev@groovyweb.firm.in"
         }
     ],
+    "prefer-stable": true,
     "require": {
         "yiisoft/yii2": "~2.0.0",
         "2amigos/yii2-tinymce-widget" : "~1.1",
