@@ -42,7 +42,7 @@ class EmailTemplate extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'emai_template_name' => Yii::t('app', 'Emai Template Name'),
+            'emai_template_name' => Yii::t('app', 'Email Template Name'),
             'email_status' => Yii::t('app', 'Email Status'),
             'email_slug' => Yii::t('app', 'Email Slug'),
             'email_available_tags' => Yii::t('app', 'Email Available Tags'),
